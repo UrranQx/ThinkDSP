@@ -109,7 +109,7 @@ def read_wave(filename="sound.wav"):
         raise ValueError("sampwidth %d unknown" % sampwidth)
 
     if sampwidth == 3:
-        xs = np.fromstring(z_str, dtype=np.int8).astype(np.int32)
+        xs = np.frombuffer(z_str, dtype=np.int8).astype(np.int32)
         ys = (xs[2::3] * 256 + xs[1::3]) * 256 + xs[0::3]
     else:
         ys = np.frombuffer(z_str, dtype=dtype_map[sampwidth])
